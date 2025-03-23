@@ -17,8 +17,6 @@ class GeminiLLM:
         self.client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
 
     def __call__(self, messages):
-        [{"type": "system", "content":"content"},
-         {"type": "human", "content":"content"}]
         try:
             # Convert LangChain messages to Gemini format
             contents = []
@@ -51,11 +49,24 @@ class GeminiLLM:
 
 # Define the response model
 class ResearchResponse(BaseModel):
+    # Define the fields for the research response
     topic: str
     summary: str
     sources: list[str]
     tools_used: list[str]
-    speed_of_response_in_second: str
+    # Define the fields for the research response
+    people: list[str]
+    organizations: list[str]
+    events: list[str]
+    places: list[str]
+    # Evaluation metrics
+    speed_of_response: str
+    accuracy_of_response: str
+    completeness_of_response: str  
+    relevance_of_response: str
+    clarity_of_response: str
+    creativity_of_response: str
+    depth_of_response: str
 # Define a sample tool (e.g., web search simulation)
 
 
